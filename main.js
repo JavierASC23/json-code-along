@@ -21,3 +21,31 @@
  *          to the randomly-chosen pokemon
  *      4. Add an eventListener to #random_btn with our new function!
  */
+
+let randomBtn = document.querySelector("#random_btn");
+randomBtn.addEventListener("click", pickRandomStarter);
+
+function pickRandomStarter(){
+    let num = Math.floor(Math.random() * pokemon.length);
+    
+    let nameHeading = document.querySelector("#poke_name");
+nameHeading.innerHTML = `#${pokemon[num].id} - ${pokemon[num].name}`;
+
+let pokeImage = document.getElementById("poke_img");
+pokeImage.src = pokemon[num].image[0];
+
+let types = document.getElementById("poke_types");
+types.innerHTML = `${pokemon[num].type[0]} - Type`;
+
+let statDiv = document.querySelectorAll("#poke_stats div")
+for(let i = 0; i < statDiv.length; i++){
+    let stat = statDiv[i].id;
+    statDiv[i].style["width"] = `${pokemon[num].base[stat] * 4}px`
+}
+}
+
+
+
+
+
+
